@@ -10,14 +10,14 @@ func GetHandler(c *fiber.Ctx, db *sql.DB) error {
 	return c.SendString("hello")
 }
 
-func PostHandler(c *fiber.Ctx) error {
+func PostHandler(c *fiber.Ctx, db *sql.DB) error {
 	return c.SendString("hello")
 }
 
-func PutHandler(c *fiber.Ctx) error {
+func PutHandler(c *fiber.Ctx, db *sql.DB) error {
 	return c.SendString("hello")
 }
 
-func DeleteHandler(c *fiber.Ctx) error {
+func DeleteHandler(c *fiber.Ctx, db *sql.DB) error {
 	return c.SendString("hello")
 }
