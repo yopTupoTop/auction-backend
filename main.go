@@ -25,12 +25,7 @@ func main() {
 	app.Post("/", func(c *fiber.Ctx) error {
 		return handler.PostHandler(c, db)
 	})
-	app.Put("/update", func(c *fiber.Ctx) error {
-		return handler.PutHandler(c, db)
-	})
-	app.Delete("/delete", func(c *fiber.Ctx) error {
-		return handler.DeleteHandler(c, db)
-	})
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "3000"

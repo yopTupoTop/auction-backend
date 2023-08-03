@@ -28,14 +28,7 @@ func GetHandler(c *fiber.Ctx, db *sql.DB) error {
 	})
 }
 
+// TODO: connect with events to write listened events to database
 func PostHandler(c *fiber.Ctx, db *sql.DB) error {
-	return c.SendString("hello")
-}
-
-func PutHandler(c *fiber.Ctx, db *sql.DB) error {
-	return c.SendString("hello")
-}
-
-func DeleteHandler(c *fiber.Ctx, db *sql.DB) error {
 	return c.SendString("hello")
 }
