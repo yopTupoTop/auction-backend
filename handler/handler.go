@@ -9,8 +9,8 @@ import (
 )
 
 func GetHandler(c *fiber.Ctx, db *sql.DB) error {
-	var asset model.PlacedAssets
-	var assets []model.PlacedAssets
+	var asset model.ContractCreated
+	var assets []model.ContractCreated
 	rows, err := db.Query("SELECT * FROM placedAssets")
 	if err != nil {
 		log.Fatal(err)
