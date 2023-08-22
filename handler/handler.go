@@ -1,7 +1,10 @@
 package handler
 
 import (
+	"auction_backend/event"
 	"auction_backend/model"
+	"fmt"
+
 	"database/sql"
 	"log"
 
@@ -28,7 +31,24 @@ func GetHandler(c *fiber.Ctx, db *sql.DB) error {
 	})
 }
 
-// TODO: connect with events to write listened events to database
 func PostHandler(c *fiber.Ctx, db *sql.DB) error {
-	return c.SendString("hello")
+	newEvents := event.ContractsCreated
+
+	if err := c.BodyParser(&newEvents); err != nil {
+		log.Printf("An error occured: %v", err)
+		return c.SendString(err.Error())
+	}
+	fmt.Printf("%v", newEvents)
+
+	for newEvent := 0; newEvent < len(newEvents); newEvent++ {
+		_, err := db.Exec("INSERT into ContractCreated VALUES ($1)")
+		if err != nil {
+			log.Fatalf("An error occured while executing query: %v", err)
+		}
+
+		newEvents[newEvent] = newEvents[len(newEvents)-1]
+		newEvents = newEvents[:len(newEvents)-1]
+	}
+
+	return c.Redirect("/")
 }
