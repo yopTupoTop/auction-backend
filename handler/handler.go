@@ -9,9 +9,9 @@ import (
 )
 
 func GetHandler(c *fiber.Ctx, db *sql.DB) error {
-	var asset model.ContractCreated
-	var assets []model.ContractCreated
-	rows, err := db.Query("SELECT * FROM placedAssets")
+	var contract model.ContractCreated
+	var contracts []model.ContractCreated
+	rows, err := db.Query("SELECT * FROM ContractCreated")
 	if err != nil {
 		log.Fatal(err)
 		c.JSON("An error occured")
@@ -19,12 +19,12 @@ func GetHandler(c *fiber.Ctx, db *sql.DB) error {
 	defer rows.Close()
 
 	for rows.Next() {
-		rows.Scan(&asset)
-		assets = append(assets, asset)
+		rows.Scan(&contract)
+		contracts = append(contracts, contract)
 	}
 
-	return c.Render("asset", fiber.Map{
-		"PlacedAssets": assets,
+	return c.Render("contract", fiber.Map{
+		"PlacedAssets": contracts,
 	})
 }
 
