@@ -9,8 +9,6 @@ import (
 
 	"auction_backend/model"
 
-	//"golang.org/x/tools/go/analysis/passes/errorsas"
-
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
@@ -72,5 +70,3 @@ func SubscribeToEvents() {
 		}
 	}
 }
-
-//listen and store events to db from auction factory contract

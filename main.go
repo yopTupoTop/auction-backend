@@ -1,6 +1,7 @@
 package main
 
 import (
+	"auction_backend/event"
 	"auction_backend/handler"
 	"database/sql"
 	"fmt"
@@ -16,6 +17,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	go event.SubscribeToEvents()
 
 	app := fiber.New()
 
