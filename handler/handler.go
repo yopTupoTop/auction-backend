@@ -27,7 +27,7 @@ func GetHandler(c *fiber.Ctx, db *sql.DB) error {
 	}
 
 	return c.Render("contract", fiber.Map{
-		"PlacedAssets": contracts,
+		"ContractCreated": contracts,
 	})
 }
 
