@@ -5,6 +5,6 @@ import (
 )
 
 type ContractCreated struct {
-	Auction common.Address `json: "auction"`
-	Owner   common.Address `json: "owner"`
+	Auction common.Address //`json: "auction"`
+	Owner   common.Address //`json: "owner"`
 }
